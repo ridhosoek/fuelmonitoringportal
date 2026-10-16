@@ -1,0 +1,2076 @@
+{
+  "source": "C:\\Users\\indra\\Downloads\\VHS_Fuel_Monitoring_Portal_System_Requirement.docx",
+  "properties": {
+    "title": "",
+    "subject": "",
+    "author": "python-docx",
+    "created": "2013-12-23 23:15:00+00:00",
+    "modified": "2013-12-23 23:15:00+00:00",
+    "last_modified_by": ""
+  },
+  "headers": [
+    {
+      "section": 1,
+      "text": "VHS FUEL MONITORING PORTAL"
+    }
+  ],
+  "footers": [
+    {
+      "section": 1,
+      "text": "System Requirement | Page"
+    }
+  ],
+  "items": [
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "SYSTEM REQUIREMENT"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "VHS Fuel Monitoring Portal"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "Operational Fuel Supply, Inventory & Consumption Monitoring"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "PILOT PROJECT"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Laravel 13 • MySQL 8+ • AdminLTE 4 • Bootstrap 5.3 • ApexCharts"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "Document Version 1.0"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "Prepared for internal development & Codex implementation"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "September 2026"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "Document Control"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Item",
+          "Detail"
+        ],
+        [
+          "Document",
+          "System Requirement - VHS Fuel Monitoring Portal"
+        ],
+        [
+          "Version",
+          "1.0"
+        ],
+        [
+          "Status",
+          "Draft for development / pilot implementation"
+        ],
+        [
+          "Primary Scope",
+          "Supply → Receiving VHS → Stock VHS → FO → Fuel Dispensing → Unit/Crane → BAST → KM/HM + Quantity → Daily Reconciliation"
+        ],
+        [
+          "Primary Users",
+          "Super Admin, VHS Admin, VHS Operator, Supervisor, Customer/BNCT Viewer"
+        ],
+        [
+          "Technology",
+          "Laravel 13, MySQL 8+, Blade, AdminLTE 4, Bootstrap 5.3, ApexCharts"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "Table of Contents"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "1. Executive Summary"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "2. Scope & Business Flow"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "3. Objectives & Success Criteria"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "4. Technology & UI Standards"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "5. User Roles & Authorization"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "6. Master Data"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "7. Fuel Receiving"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "8. Inventory & Stock Ledger"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "9. Fuel Order (FO)"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "10. Fuel Dispensing"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "11. BAST & Reconciliation"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "12. Daily Reconciliation"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "13. Dashboard & Charts"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "14. Unit Monitoring & Reports"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "15. Database & Application Architecture"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "16. Security, Audit & Data Integrity"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "17. Testing & Seed Data"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "18. Definition of Done & Codex Build Order"
+    },
+    {
+      "type": "paragraph",
+      "style": "Normal",
+      "text": "19. Open Business Decisions"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "1. Executive Summary"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "VHS Fuel Monitoring Portal adalah aplikasi web untuk mendigitalisasi dan memonitor proses operasional BBM di lokasi customer. Sistem difokuskan pada transparansi supply, akurasi stock, kontrol penyaluran ke unit, pencatatan KM/HM, BAST, serta rekonsiliasi harian."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Scope dipertahankan secara ketat Tidak mencakup SPH, Sales Order, Purchase Order komersial, invoice, pajak, pembayaran, maupun accounting."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Sistem dirancang sebagai pilot project yang tetap siap dikembangkan menjadi platform multi-customer pada fase berikutnya. Walaupun implementasi awal untuk BNCT, struktur data harus mendukung customer, site, dan storage lebih dari satu."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "2. Scope & Business Flow"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "2.1 In-Scope Business Flow"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "SUPPLY BBM ↓ Depo / Storage Cemara ↓ Mobil Tangki ↓ Receiving VHS BNCT ↓ STOCK VHS ↓ BNCT / Admin membuat FO ↓ Fuel Dispensing ↓ Unit / Crane BNCT ↓ BAST ↓ KM / HM + Quantity ↓ Daily Reconciliation"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "2.2 In Scope"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Master customer, site, storage, fuel source/depot, unit, dan user."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel Receiving untuk BBM masuk ke storage VHS."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Stock ledger dan current stock."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel Order (FO) header-detail."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel Dispensing berdasarkan FO."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Pencatatan KM atau HM setiap pengisian."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "BAST sebagai bukti serah terima."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "FO vs Dispensing vs BAST reconciliation."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Daily stock reconciliation antara system stock dan physical stock."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Dashboard dengan KPI dan chart."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Unit monitoring, report, export Excel, attachment, role/permission, dan audit trail."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "2.3 Out of Scope"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "SPH / price commercial"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Sales Order"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Purchase Order commercial"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Invoice & tax"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Payment monitoring"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Accounting journal"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "IoT tank sensor / automated flow meter pada pilot awal"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "AI anomaly detection pada pilot awal"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "3. Objectives & Success Criteria"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Objective",
+          "Success Indicator"
+        ],
+        [
+          "Digitalisasi receiving",
+          "Setiap supply yang diterima mempunyai nomor transaksi, source, storage, quantity, attachment, user dan status."
+        ],
+        [
+          "Stock akurat",
+          "Stock berasal dari stock movement; tidak ada editable stock balance sebagai sumber kebenaran."
+        ],
+        [
+          "Kontrol FO",
+          "Dispensing selalu dikaitkan ke FO aktif dan remaining quantity tervalidasi."
+        ],
+        [
+          "Unit traceability",
+          "Setiap dispensing mencatat unit, quantity, KM/HM dan operator."
+        ],
+        [
+          "Reconciliation",
+          "FO, dispensing, BAST dan daily stock dapat dibandingkan."
+        ],
+        [
+          "Management visibility",
+          "Dashboard memperlihatkan current stock, receiving, consumption, open FO, variance, trend dan top consuming units."
+        ],
+        [
+          "Auditability",
+          "Transaksi POSTED/FINAL/APPROVED tidak di-hard-delete dan seluruh perubahan penting tercatat."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "4. Technology & UI Standards"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "4.1 Technology Stack"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Layer",
+          "Standard"
+        ],
+        [
+          "Backend",
+          "Laravel 13"
+        ],
+        [
+          "Database",
+          "MySQL 8+"
+        ],
+        [
+          "Frontend",
+          "Blade Template"
+        ],
+        [
+          "Admin UI",
+          "AdminLTE 4"
+        ],
+        [
+          "CSS",
+          "Bootstrap 5.3"
+        ],
+        [
+          "Charts",
+          "ApexCharts"
+        ],
+        [
+          "Icons",
+          "Bootstrap Icons"
+        ],
+        [
+          "Asset Build",
+          "Vite"
+        ],
+        [
+          "Authentication",
+          "Laravel session authentication"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Jangan menggunakan React, Vue, Inertia atau SPA framework. Arsitektur Blade dipilih agar deployment, debugging, dan maintenance tetap sederhana untuk pilot project."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "4.2 UI/UX Direction"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Clean, modern, enterprise, responsive dan professional."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "AdminLTE digunakan sebagai base, tetapi tidak dibiarkan tampil default tanpa refinement."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Sidebar tidak terlalu ramai; menu dikelompokkan berdasarkan domain."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Dashboard memakai KPI cards, progress, badge, chart dan concise alerts."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Tabel mempunyai search, filter, pagination dan status badge."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel Dispensing harus nyaman digunakan dari tablet/smartphone, dengan input dan tombol yang cukup besar."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Gunakan warna status secara konsisten: normal/success, warning, danger, info."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "4.3 Main Navigation"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Dashboard Operations ├── Fuel Receiving ├── Fuel Order ├── Fuel Dispensing ├── BAST └── Daily Reconciliation Inventory ├── Current Stock └── Stock Movement Unit Monitoring ├── Units └── Fuel Consumption Reports ├── Receiving Report ├── Dispensing Report ├── Stock Report ├── Unit Consumption Report ├── FO vs Dispensing └── Daily Reconciliation Report Master Data ├── Customer ├── Site ├── Storage ├── Fuel Source / Depot ├── Unit └── User Management Administration └── Audit Trail"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "5. User Roles & Authorization"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Role",
+          "Primary Access",
+          "Restrictions / Notes"
+        ],
+        [
+          "Super Admin",
+          "Seluruh modul, konfigurasi, master, transaction, report, audit",
+          "Full system access."
+        ],
+        [
+          "VHS Admin",
+          "Receiving, stock, FO, dispensing, BAST, reconciliation, report",
+          "Tidak mengubah konfigurasi inti tanpa permission."
+        ],
+        [
+          "VHS Operator",
+          "Open FO, dispensing, input KM/HM, attachment, draft BAST",
+          "Tidak approve reconciliation/correction."
+        ],
+        [
+          "Supervisor",
+          "Dashboard, all transactions, correction approval, reconciliation approval, report",
+          "Dapat override tertentu dengan reason."
+        ],
+        [
+          "Customer / BNCT Viewer",
+          "Dashboard, stock, transaction, FO, BAST, unit consumption, report",
+          "Read-only. Desain permission harus memungkinkan customer membuat FO pada fase berikutnya."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Authorization wajib divalidasi di backend melalui middleware/policy/permission. Menyembunyikan menu di frontend saja tidak dianggap sebagai security control."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "6. Master Data"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Master",
+          "Required Fields / Rules"
+        ],
+        [
+          "Customer",
+          "customer_code, customer_name, address, contact_person, phone, email, status. Multi-customer ready."
+        ],
+        [
+          "Site",
+          "customer_id, site_code, site_name, address, status."
+        ],
+        [
+          "Storage",
+          "site_id, storage_code, storage_name, capacity_liter, minimum_stock_liter, status. Current stock tidak diedit manual."
+        ],
+        [
+          "Fuel Source / Depot",
+          "code, name, source_type, address, status. Contoh: Depo Pertamina, Storage Cemara."
+        ],
+        [
+          "Unit",
+          "customer_id, site_id, unit_code, unit_name, plate_number, unit_type, brand, model, meter_type, status. meter_type = KM atau HM."
+        ],
+        [
+          "User",
+          "name, username/email, role/permission, active status, password hash."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "7. Fuel Receiving"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "7.1 Process"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "BBM dikirim → Mobil Tangki tiba → Admin input Receiving → Quantity diverifikasi → POSTED → Stock bertambah"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "7.2 Required Fields"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "receiving_number"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "receiving_date & receiving_time"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "site_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "storage_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "fuel_source_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "delivery_document_number"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "truck_plate_number"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "driver_name"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "quantity_liter"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "notes"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "attachment"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "status"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "created_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "posted_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "posted_at"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "7.3 Status & Rules"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Status",
+          "Rule"
+        ],
+        [
+          "DRAFT",
+          "Masih dapat diedit sesuai permission."
+        ],
+        [
+          "POSTED",
+          "Membentuk stock movement IN. Tidak boleh dihapus."
+        ],
+        [
+          "REVERSED",
+          "Membentuk reversal movement; wajib reason dan audit trail."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Posting receiving wajib berada dalam satu database transaction bersama pencatatan stock movement. Jika salah satu operasi gagal, seluruh proses harus rollback."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "8. Inventory & Stock Ledger"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Current stock harus dihitung dari stock ledger/stock movement. Jangan menggunakan field storage.stock sebagai sumber kebenaran yang dapat diedit manual."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "8.1 Movement Types"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Movement Type",
+          "Sign / Source"
+        ],
+        [
+          "RECEIVING",
+          "Positive / Fuel Receiving"
+        ],
+        [
+          "DISPENSING",
+          "Negative / Fuel Dispensing"
+        ],
+        [
+          "ADJUSTMENT_IN",
+          "Positive / Approved adjustment"
+        ],
+        [
+          "ADJUSTMENT_OUT",
+          "Negative / Approved adjustment"
+        ],
+        [
+          "REVERSAL",
+          "Opposite movement dari transaksi yang direverse"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "8.2 Current Stock"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Current Stock = SUM(stock_movements.quantity) IN = positive OUT = negative"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "8.3 Current Stock Page"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Storage"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Capacity"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Current Stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Available %"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Minimum Stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Last Receiving"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Last Dispensing"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "LOW STOCK badge jika current_stock <= minimum_stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "9. Fuel Order (FO)"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "FO adalah permintaan BBM sebelum penyaluran. Gunakan struktur Header + Detail agar satu FO dapat berisi banyak unit."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "9.1 FO Header"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "fo_number"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "fo_date"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "customer_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "site_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "requested_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "notes"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "status"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "created_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "9.2 FO Detail"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "fuel_order_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "unit_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "requested_quantity"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "dispensed_quantity (derived / calculated)"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "notes"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "9.3 Status"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Status",
+          "Meaning"
+        ],
+        [
+          "DRAFT",
+          "Belum aktif untuk dispensing."
+        ],
+        [
+          "OPEN",
+          "Dapat digunakan untuk dispensing."
+        ],
+        [
+          "PARTIAL",
+          "Sebagian quantity sudah disalurkan."
+        ],
+        [
+          "COMPLETED",
+          "Seluruh item terpenuhi sesuai rule."
+        ],
+        [
+          "CANCELLED",
+          "Tidak dapat digunakan untuk transaksi baru."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "9.4 Example"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "FO-20260915-001 TT-001 100 L TT-002 150 L CRANE-001 200 L ----------------- Total 450 L"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "10. Fuel Dispensing"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "10.1 User Flow"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Pilih FO → Pilih Unit → Tampilkan Requested / Already Dispensed / Remaining → Input KM/HM → Input Actual Quantity → Upload Bukti → Submit / Post → Stock berkurang"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "10.2 Required Fields"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "dispensing_number"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "dispensing_date & dispensing_time"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "fuel_order_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "fuel_order_item_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "storage_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "unit_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "meter_type"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "meter_value"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "quantity_liter"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "operator_name"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "notes"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "attachment"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "status"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "created_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "posted_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "posted_at"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "10.3 Validation Rules"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Validation",
+          "Rule"
+        ],
+        [
+          "Unit",
+          "Harus aktif."
+        ],
+        [
+          "FO",
+          "Harus OPEN atau PARTIAL dan item aktif."
+        ],
+        [
+          "Quantity",
+          "> 0 dan tidak melebihi remaining FO kecuali supervisor override."
+        ],
+        [
+          "Stock",
+          "Harus cukup sebelum POST."
+        ],
+        [
+          "Meter",
+          "KM/HM wajib terisi sesuai meter_type."
+        ],
+        [
+          "Storage",
+          "Harus aktif."
+        ],
+        [
+          "Posting",
+          "Stock movement OUT dibuat dalam transaction yang sama."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "10.4 FO Remaining Calculation"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "FO Requested 200 L Already Dispensed 120 L Remaining 80 L Current input must be <= 80 L unless approved override."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "10.5 KM/HM Validation"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Sistem mencari meter terakhir unit. Meter baru secara default tidak boleh lebih rendah dari previous meter. Supervisor dapat override hanya dengan reason, approved_by dan approved_at. Meter history disimpan pada transaction history, bukan hanya pada unit master."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "11. BAST & FO Reconciliation"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "11.1 BAST"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "BAST adalah bukti serah terima penyaluran BBM. Gunakan header-detail dan izinkan satu BAST mereferensikan satu atau lebih dispensing dalam FO yang sama."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "BAST Header",
+          "BAST Detail"
+        ],
+        [
+          "bast_number",
+          "fuel_dispensing_id"
+        ],
+        [
+          "bast_date",
+          "unit_id"
+        ],
+        [
+          "fuel_order_id",
+          "quantity_liter"
+        ],
+        [
+          "customer_id / site_id",
+          "meter_type"
+        ],
+        [
+          "received_by / operator_name",
+          "meter_value"
+        ],
+        [
+          "notes / status / created_by",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Status BAST: DRAFT, FINAL, CANCELLED. BAST FINAL tidak boleh diedit langsung."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "11.2 FO vs Dispensing vs BAST"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Scenario",
+          "FO",
+          "Dispensing",
+          "BAST",
+          "System Status"
+        ],
+        [
+          "Exact",
+          "200 L",
+          "200 L",
+          "200 L",
+          "MATCHED"
+        ],
+        [
+          "Partial",
+          "200 L",
+          "198 L",
+          "198 L",
+          "PARTIAL"
+        ],
+        [
+          "Over",
+          "200 L",
+          "240 L",
+          "240 L",
+          "OVER DISPENSING / requires control"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "12. Daily Reconciliation"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Daily Reconciliation dilakukan pada akhir operasional untuk membandingkan system closing stock dengan physical closing stock."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "12.1 Formula"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Opening Stock + Today Receiving - Today Dispensing +/- Approved Adjustment = System Closing Stock Physical Closing Stock - System Closing Stock = Variance"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "12.2 Required Data"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "reconciliation_date"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "site_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "storage_id"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "opening_stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "total_receiving"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "total_dispensing"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "total_adjustment"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "system_closing_stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "physical_closing_stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "variance"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "variance_percentage"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "notes"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "status"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "prepared_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "submitted_at"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "approved_by"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "approved_at"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "12.3 Business Rules"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Opening stock berasal dari closing stock hari sebelumnya."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Receiving, dispensing dan adjustment dihitung otomatis dari transaksi POSTED pada tanggal terkait."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "User hanya menginput physical closing stock dan notes."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Status: DRAFT → SUBMITTED → APPROVED."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Setelah APPROVED, perubahan hanya melalui controlled correction/reversal dengan audit trail."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "13. Dashboard & Charts"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "13.1 Dashboard Filters"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Customer"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Site"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Storage"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Date Range (default Today)"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "13.2 KPI Cards"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "KPI",
+          "Display Example"
+        ],
+        [
+          "Current Stock",
+          "18,250 L"
+        ],
+        [
+          "Today Receiving",
+          "8,000 L"
+        ],
+        [
+          "Today Consumption",
+          "4,820 L"
+        ],
+        [
+          "Today Transactions",
+          "38"
+        ],
+        [
+          "Active Units",
+          "42"
+        ],
+        [
+          "Open FO",
+          "8"
+        ],
+        [
+          "Stock Variance",
+          "-25 L"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "13.3 Required ApexCharts"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Chart",
+          "Type",
+          "Purpose"
+        ],
+        [
+          "Stock Trend",
+          "Line",
+          "Closing/current stock trend, default 30 days."
+        ],
+        [
+          "Receiving vs Consumption",
+          "Column / combination",
+          "Daily incoming vs outgoing fuel."
+        ],
+        [
+          "Top Fuel Consumption by Unit",
+          "Horizontal bar",
+          "Top 10 unit berdasarkan liter."
+        ],
+        [
+          "Consumption by Unit Type",
+          "Donut",
+          "Truck, Crane, RTG, Reach Stacker, Others."
+        ],
+        [
+          "KM/HM Efficiency",
+          "Bar / line",
+          "KM/L untuk unit KM dan L/HM untuk unit HM; jangan dicampur dalam satu ranking."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "13.4 Latest Transactions & Alerts"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Latest Fuel Dispensing table: time, FO, unit, KM/HM, quantity, operator, status."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Alerts: LOW STOCK, FO OVER DISPENSING, STOCK VARIANCE, INVALID METER, PENDING RECONCILIATION."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "14. Unit Monitoring & Reports"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "14.1 Unit Detail"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Unit information"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Current KM/HM"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Last refueling"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Total fuel consumption"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Number of refueling"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Total distance / operating hours"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Efficiency"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel consumption trend"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Transaction history"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "14.2 Efficiency Metrics"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Unit with KM meter: Efficiency = Distance / Fuel = KM/L Unit with HM meter: Consumption Rate = Fuel / Operating Hours = L/HM"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "14.3 Reports"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Report",
+          "Minimum Columns"
+        ],
+        [
+          "Receiving",
+          "Date, Receiving No, Source, Truck, Storage, Quantity, Status"
+        ],
+        [
+          "Dispensing",
+          "Date, FO, Unit, KM/HM, Quantity, Storage, Operator"
+        ],
+        [
+          "Stock Movement",
+          "Date, Reference, Type, IN, OUT, Balance"
+        ],
+        [
+          "Unit Consumption",
+          "Unit, Opening Meter, Closing Meter, Distance/HM, Fuel, Efficiency"
+        ],
+        [
+          "FO Reconciliation",
+          "FO, Requested, Dispensed, BAST, Difference, Status"
+        ],
+        [
+          "Daily Reconciliation",
+          "Date, Opening, Receiving, Dispensing, System Closing, Physical, Variance, Status"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Semua report wajib mendukung date range, customer/site/unit/storage filter sesuai konteks, search, pagination dan export minimal ke Excel."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "15. Database & Application Architecture"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "15.1 Minimum Tables"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "users customers sites storages fuel_sources units fuel_receivings fuel_orders fuel_order_items fuel_dispensings basts bast_items stock_movements daily_reconciliations attachments audit_logs"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "15.2 Database Standards"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Gunakan foreign key pada relational data."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Index minimum pada transaction date, customer_id, site_id, storage_id, unit_id, fuel_order_id dan status."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Quantity liter menggunakan DECIMAL(15,3), bukan FLOAT."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Nomor transaksi harus unique."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "File attachment disimpan melalui Laravel Storage; MySQL hanya menyimpan metadata/path."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "15.3 Application Layers"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Controller ↓ Form Request ↓ Service / Action ↓ Model ↓ Database"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Business logic seperti stock posting, FO calculation, dispensing validation, reconciliation dan unit efficiency tidak boleh ditumpuk seluruhnya di controller."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "15.4 Suggested Services"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "FuelReceivingService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "FuelDispensingService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "StockService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "FuelOrderService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "BastService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "ReconciliationService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "UnitConsumptionService"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "DashboardService"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "15.5 Number Format"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "RCV-20260915-0001 FO-20260915-0001 DSP-20260915-0001 BAST-20260915-0001 REC-20260915-0001"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "16. Security, Audit & Data Integrity"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "16.1 Database Transaction Integrity"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Operasi berikut wajib dibungkus dalam database transaction: Post Receiving, Post Dispensing, Reverse Receiving, Reverse Dispensing, BAST Finalization dan Daily Reconciliation. Jika salah satu langkah gagal, lakukan rollback penuh."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "16.2 Audit Trail"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Simpan user, action, module, record id/reference, old_values, new_values, IP address, timestamp."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Action minimum: CREATE, UPDATE, POST, REVERSE, APPROVE, LOGIN."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "POSTED/FINAL/APPROVED records tidak di-hard-delete."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "16.3 Application Security"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Laravel authentication"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Authorization middleware/policy/permission"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "CSRF protection"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "XSS-safe Blade rendering"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Server-side Form Request validation"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Password hashing"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Foreign key constraints"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Secure file upload validation"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Least privilege role access"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "17. Testing & Seed Data"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "17.1 Feature Tests"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Login & authorization"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel receiving"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Stock increases after posted receiving"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "FO creation"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Fuel dispensing"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Stock decreases after posted dispensing"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Prevent insufficient stock"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Prevent dispensing above remaining FO without override"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "KM/HM validation"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "BAST finalization"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Daily reconciliation"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Transaction reversal"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "17.2 Seeder Demo"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "1 Customer: BNCT"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "1 Site: Belawan New Container Terminal"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "1 Storage: VHS BNCT, capacity 30,000 L, minimum stock 10,000 L"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "2 Fuel Sources: Depo Pertamina dan Storage Cemara"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "10 Units: campuran KM dan HM"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Users: Super Admin, VHS Admin, Operator, Supervisor, Customer Viewer"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Bullet",
+      "text": "Sample receiving, FO, dispensing, BAST, stock movement dan daily reconciliation agar dashboard langsung berisi data"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "18. Definition of Done & Codex Build Order"
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "18.1 End-to-End Definition of Done"
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Admin login dan memiliki menu sesuai role."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Admin menerima supply 8,000 L dan mem-posting receiving."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Stock VHS otomatis bertambah 8,000 L melalui stock movement."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Admin membuat FO: TT-001 100 L dan Crane-01 200 L."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Operator melakukan dispensing TT-001 dengan KM 120,500 dan quantity 100 L."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Operator melakukan dispensing Crane-01 dengan HM 4,820 dan quantity 200 L."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Stock otomatis berkurang total 300 L."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "BAST dibuat berdasarkan dispensing terkait."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "FO menunjukkan requested, dispensed dan remaining dengan benar."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Unit history menampilkan KM/HM dan quantity."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Dashboard KPI dan charts ikut berubah berdasarkan transaction data."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Admin melakukan Daily Reconciliation; system menghitung opening, receiving, dispensing, system closing, physical dan variance."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Supervisor approve reconciliation."
+    },
+    {
+      "type": "paragraph",
+      "style": "List Number",
+      "text": "Seluruh aktivitas penting tersimpan pada Audit Trail."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 2",
+      "text": "18.2 Codex Build Order"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Foundation ↓ Authentication + Role ↓ Master Data ↓ Fuel Receiving ↓ Stock Ledger ↓ Fuel Order ↓ Fuel Dispensing ↓ BAST ↓ Daily Reconciliation ↓ Unit Monitoring ↓ Dashboard + ApexCharts ↓ Reports ↓ Audit Trail ↓ Automated Testing ↓ UI Refinement"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Setiap modul harus dikerjakan sebagai vertical slice: migration → model/relationship → validation → service/action → controller → route → Blade view → permission → test. Jangan membuat dummy UI tanpa backend yang berfungsi."
+    },
+    {
+      "type": "paragraph",
+      "style": "Heading 1",
+      "text": "19. Open Business Decisions"
+    },
+    {
+      "type": "paragraph",
+      "style": "Body Text",
+      "text": "Beberapa keputusan bisnis masih perlu dikonfirmasi sebelum production. Requirement teknis dirancang agar keputusan ini tidak memaksa perubahan besar pada database."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Decision",
+          "Question to Confirm",
+          "Current Design Assumption"
+        ],
+        [
+          "FO creator",
+          "Apakah BNCT membuat FO langsung di portal atau FO diberikan kepada Admin VHS untuk diinput?",
+          "Keduanya dapat didukung melalui permission."
+        ],
+        [
+          "Dispensing over FO",
+          "Apakah quantity boleh melebihi remaining FO?",
+          "Default tidak; supervisor override dengan reason."
+        ],
+        [
+          "BAST signature",
+          "Apakah BAST cukup dicatat/diupload atau harus digital signature?",
+          "Pilot: data + attachment; digital signature future option."
+        ],
+        [
+          "Physical stock measurement",
+          "Bagaimana physical closing stock ditentukan? Dipstick, tank gauge, atau metode lain?",
+          "System menerima angka physical stock dari user yang berwenang."
+        ],
+        [
+          "Adjustment",
+          "Siapa yang boleh membuat stock adjustment?",
+          "Supervisor / privileged admin only, wajib reason & audit."
+        ],
+        [
+          "Customer access",
+          "Apakah customer hanya read-only atau dapat membuat FO?",
+          "Pilot read-only; architecture siap untuk customer FO."
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Implementation Principle Pilot harus sederhana, stabil, audit-able, dan berfungsi end-to-end sebelum penambahan IoT, AI, atau modul komersial."
+        ]
+      ]
+    }
+  ],
+  "comments": [],
+  "tracked_change_counts": {
+    "ins": 0,
+    "del": 0,
+    "moveFrom": 0,
+    "moveTo": 0
+  },
+  "image_count": 0
+}
