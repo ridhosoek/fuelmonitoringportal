@@ -47,6 +47,8 @@ class OperationalDashboardTest extends TestCase
         $this->assertSame('1/5 VHS', $dashboard['summary']['stock_variance']['coverage']);
         $this->assertSame(4, $dashboard['critical_alert_count']);
         $this->assertCount(5, $dashboard['stock_by_vhs']);
+        $this->assertSame(4, collect($dashboard['stock_by_vhs'])->where('status', Storage::STOCK_STATUS_EMPTY)->count());
+        $this->assertSame(0, collect($dashboard['stock_by_vhs'])->where('status', Storage::STOCK_STATUS_LOW)->count());
         $this->assertCount(2, $dashboard['top_consumers']);
         $this->assertSame([], $dashboard['efficiency']['vehicle']);
         $this->assertCount(2, $dashboard['efficiency']['equipment']);
@@ -126,6 +128,40 @@ class OperationalDashboardTest extends TestCase
         $this->assertSame([], $dashboard['efficiency']['equipment']);
         $this->assertSame([], $dashboard['transactions']);
         $this->assertSame('CRITICAL', $dashboard['alerts'][0]['severity']);
+    }
+
+    public function test_operational_dashboard_distinguishes_low_stock_from_empty_stock(): void
+    {
+        $this->seed();
+
+        $storage = Storage::query()
+            ->whereNotIn('id', StockMovement::query()->select('storage_id'))
+            ->firstOrFail();
+        $admin = User::query()->where('username', 'superadmin')->firstOrFail();
+        $minimumStock = (float) $storage->minimum_stock_liter;
+
+        StockMovement::query()->create([
+            'movement_date' => today()->toDateString(),
+            'movement_time' => now()->format('H:i:s'),
+            'storage_id' => $storage->id,
+            'movement_type' => StockMovement::TYPE_ADJUSTMENT_IN,
+            'reference_type' => 'TEST',
+            'reference_id' => $storage->id,
+            'reference_number' => 'TEST-LOW-STOCK',
+            'quantity_liter' => $minimumStock,
+            'balance_after' => $minimumStock,
+            'notes' => 'Boundary test for operational dashboard stock status.',
+            'created_by' => $admin->id,
+        ]);
+
+        $dashboard = app(OperationalDashboardService::class)->overview([
+            'storage_id' => $storage->id,
+        ]);
+
+        $this->assertSame(Storage::STOCK_STATUS_LOW, $dashboard['stock_by_vhs'][0]['status']);
+        $this->assertSame(0, $dashboard['critical_alert_count']);
+        $this->assertSame('WARNING', $dashboard['alerts'][0]['severity']);
+        $this->assertSame('Low Stock', $dashboard['alerts'][0]['title']);
     }
 
     public function test_site_and_vhs_filter_pair_is_validated_server_side(): void

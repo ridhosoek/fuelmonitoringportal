@@ -65,7 +65,7 @@
                 <i class="bi bi-exclamation-octagon" aria-hidden="true"></i>
                 <div>
                     <strong>{{ $dashboard['critical_alert_count'] }} VHS membutuhkan perhatian segera</strong>
-                    <span>Stok berada pada atau di bawah minimum yang dikonfigurasi.</span>
+                    <span>Stok VHS kosong dan memerlukan tindak lanjut segera.</span>
                 </div>
                 <a href="#attention-required">Review alerts <i class="bi bi-arrow-down"></i></a>
             </div>

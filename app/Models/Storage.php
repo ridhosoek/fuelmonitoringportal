@@ -14,6 +14,12 @@ class Storage extends Model
     /** @use HasFactory<StorageFactory> */
     use HasFactory;
 
+    public const STOCK_STATUS_EMPTY = 'EMPTY';
+
+    public const STOCK_STATUS_LOW = 'LOW';
+
+    public const STOCK_STATUS_OK = 'OK';
+
     /**
      * @var list<string>
      */
@@ -64,7 +70,25 @@ class Storage extends Model
 
     public function isLowStock(float $currentStock): bool
     {
-        return $currentStock <= (float) $this->minimum_stock_liter;
+        return $this->stockStatus($currentStock) === self::STOCK_STATUS_LOW;
+    }
+
+    public function isEmptyStock(float $currentStock): bool
+    {
+        return $this->stockStatus($currentStock) === self::STOCK_STATUS_EMPTY;
+    }
+
+    public function stockStatus(float $currentStock): string
+    {
+        if ($currentStock <= 0) {
+            return self::STOCK_STATUS_EMPTY;
+        }
+
+        if ($currentStock <= (float) $this->minimum_stock_liter) {
+            return self::STOCK_STATUS_LOW;
+        }
+
+        return self::STOCK_STATUS_OK;
     }
 
     /**

@@ -1656,6 +1656,21 @@ body {
     background: #edf8f2;
 }
 
+.control-status-ok {
+    color: var(--control-safe);
+    background: #edf8f2;
+}
+
+.control-status-low {
+    color: var(--control-warning);
+    background: #fff8e7;
+}
+
+.control-status-empty {
+    color: var(--control-critical);
+    background: #fff1ef;
+}
+
 .control-status-critical {
     color: var(--control-critical);
     background: #fff1ef;

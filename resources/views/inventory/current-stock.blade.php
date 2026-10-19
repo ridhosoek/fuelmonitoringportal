@@ -23,11 +23,12 @@
                                 <div class="metric-label">{{ $row['storage']->terminal?->terminal_name ?: $row['storage']->site?->site_name }}</div>
                                 <div class="metric-value">{{ $row['storage']->storage_name }}</div>
                             </div>
-                            @if($row['is_low'])
-                                <span class="badge text-bg-danger align-self-start">LOW</span>
-                            @else
-                                <span class="badge text-bg-success align-self-start">OK</span>
-                            @endif
+                            <span @class([
+                                'badge align-self-start',
+                                'text-bg-danger' => $row['status'] === \App\Models\Storage::STOCK_STATUS_EMPTY,
+                                'text-bg-warning' => $row['status'] === \App\Models\Storage::STOCK_STATUS_LOW,
+                                'text-bg-success' => $row['status'] === \App\Models\Storage::STOCK_STATUS_OK,
+                            ])>{{ $row['status'] }}</span>
                         </div>
                         <div class="d-flex justify-content-between">
                             <span>Stock</span>
@@ -42,7 +43,12 @@
                             <span>{{ \App\Support\QuantityFormatter::format($row['capacity']) }} L</span>
                         </div>
                         <div class="progress" role="progressbar" aria-valuenow="{{ min(100, $row['fill_rate']) }}" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar @if($row['is_low']) bg-danger @else bg-success @endif" style="width: {{ min(100, max(0, $row['fill_rate'])) }}%"></div>
+                            <div @class([
+                                'progress-bar',
+                                'bg-danger' => $row['status'] === \App\Models\Storage::STOCK_STATUS_EMPTY,
+                                'bg-warning' => $row['status'] === \App\Models\Storage::STOCK_STATUS_LOW,
+                                'bg-success' => $row['status'] === \App\Models\Storage::STOCK_STATUS_OK,
+                            ]) style="width: {{ min(100, max(0, $row['fill_rate'])) }}%"></div>
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,7 @@ class InventoryController extends Controller
             ->map(function (Storage $storage) use ($stockService): array {
                 $stock = $stockService->currentStock($storage);
                 $capacity = (float) $storage->capacity_liter;
+                $status = $storage->stockStatus($stock);
 
                 return [
                     'storage' => $storage,
@@ -33,7 +34,7 @@ class InventoryController extends Controller
                     'minimum' => (float) $storage->minimum_stock_liter,
                     'capacity' => $capacity,
                     'fill_rate' => $capacity > 0 ? ($stock / $capacity) * 100 : 0,
-                    'is_low' => $storage->isLowStock($stock),
+                    'status' => $status,
                 ];
             });
 

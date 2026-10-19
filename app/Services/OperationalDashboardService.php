@@ -278,11 +278,15 @@ class OperationalDashboardService
                     'days_remaining' => $averageConsumption !== null && $averageConsumption > 0
                         ? round($currentStock / $averageConsumption, 1)
                         : null,
-                    'status' => $storage->isLowStock($currentStock) ? 'CRITICAL' : 'SAFE',
+                    'status' => $storage->stockStatus($currentStock),
                 ];
             })
             ->sortBy([
-                fn (array $position): int => $position['status'] === 'CRITICAL' ? 0 : 1,
+                fn (array $position): int => match ($position['status']) {
+                    Storage::STOCK_STATUS_EMPTY => 0,
+                    Storage::STOCK_STATUS_LOW => 1,
+                    default => 2,
+                },
                 fn (array $position): float => $position['percentage'] ?? PHP_FLOAT_MAX,
             ]);
     }
@@ -308,10 +312,10 @@ class OperationalDashboardService
             ->pluck('aggregate', 'site_id');
 
         $alerts = $stockPositions
-            ->where('status', 'CRITICAL')
+            ->whereIn('status', [Storage::STOCK_STATUS_EMPTY, Storage::STOCK_STATUS_LOW])
             ->map(fn (array $position): array => [
-                'severity' => 'CRITICAL',
-                'title' => 'Critical Stock',
+                'severity' => $position['status'] === Storage::STOCK_STATUS_EMPTY ? 'CRITICAL' : 'WARNING',
+                'title' => $position['status'] === Storage::STOCK_STATUS_EMPTY ? 'Empty Stock' : 'Low Stock',
                 'subject' => $position['name'],
                 'current_stock' => $position['stock'],
                 'minimum_stock' => $position['minimum'],
@@ -320,7 +324,9 @@ class OperationalDashboardService
                 'action' => ((int) $openFoBySite->get($position['site_id'], 0)) > 0
                     ? 'FO sedang terbuka'
                     : 'FO belum tersedia',
-                'message' => 'Stok berada pada atau di bawah batas minimum VHS.',
+                'message' => $position['status'] === Storage::STOCK_STATUS_EMPTY
+                    ? 'Stok VHS kosong dan perlu segera diisi kembali.'
+                    : 'Stok telah mencapai atau berada di bawah batas minimum VHS.',
             ])
             ->values();
 

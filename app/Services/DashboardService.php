@@ -240,9 +240,17 @@ class DashboardService
             ->with('site')
             ->get()
             ->each(function (Storage $storage) use (&$alerts): void {
-                if ($storage->isLowStock($this->stockService->currentStock($storage))) {
+                $stockStatus = $storage->stockStatus($this->stockService->currentStock($storage));
+
+                if ($stockStatus === Storage::STOCK_STATUS_EMPTY) {
                     $alerts[] = [
                         'level' => 'danger',
+                        'title' => 'EMPTY STOCK',
+                        'message' => $storage->storage_name.' tidak memiliki stok BBM.',
+                    ];
+                } elseif ($stockStatus === Storage::STOCK_STATUS_LOW) {
+                    $alerts[] = [
+                        'level' => 'warning',
                         'title' => 'LOW STOCK',
                         'message' => $storage->storage_name.' telah mencapai atau berada di bawah minimum stock.',
                     ];
